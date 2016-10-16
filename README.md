@@ -1,4 +1,7 @@
-<<<<<<< HEAD
+# rusquant from r8m
+форк модификации [rusqaunt](https://github.com/r8m/rusquant)
+
+
 #Rusquant
 Это форк пакета [rusquant](http://r-forge.r-project.org/projects/rusquant/)  
 Что нового:
