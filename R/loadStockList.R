@@ -28,23 +28,36 @@ library(XML)
         download.file(stocklist.URL, destfile=tmp,quiet=!verbose)
         fr <- readLines(con = tmp, warn=FALSE)
         unlink(tmp)
+        
         ids <- sub("var .*?= \\[", "", fr[1])
         ids <- sub("\\];", "", ids)
         ids <- strsplit(ids, ",")
         
+        names.ru <- sub("var .*?= \\[", "", fr[2])
+        names.ru <- sub("\\];", "", names.ru)
+        names.ru <- strsplit(names.ru, ",")
+        
+        urls <- sub("var .*?= \\[", "", fr[9])
+        urls  <- sub("\\];", "", urls )
+        urls  <- strsplit(urls , ",")
+        
         markets <- sub("var .*?= \\[", "", fr[4])
         markets <- sub("\\];", "", markets)
         markets <- strsplit(markets, ",")
+        markets <- unlist(markets)
         
         names <- sub("var .*?= \\[", "", fr[3])
         names <- sub("\\];", "", names)
         names <- gsub("'", "", names)
         names <- strsplit(names, ",")
-        names[[1]]->names
-        #	names[-(8497)]->names
+        names <- unlist(names)
+        #names[[1]]->names
+        
+        #names[-(8497)]->names
         res <- unlist(ids)
         
-        data<-data.frame(names,res,markets)
+        data <- cbind(names,res,markets)
+        #data<-data.frame(names,res,markets)
         data[data[,3]!=3,]->data
         rbind(data[(data[,1]%in%data[data[,3]==1,1]) & data[,3]==1,],data[!(data[,1]%in%data[data[,3]==1,1]),])->data
         data[,2]->res

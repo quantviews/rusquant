@@ -119,6 +119,8 @@ function(Symbols,env,return.class='xts',index.class='Date',
          to=Sys.Date(),
          adjust=FALSE,
          period='day',
+         verbose=FALSE,
+         auto.assign=FALSE,
          ...)
 {
      importDefaults("getSymbols.Finam")
