@@ -153,7 +153,8 @@ function(Symbols,env,return.class='xts',index.class='Date',
      if (p==0) {
         message(paste("Unkown period ", period))
      }
-     finam.HOST <- '195.128.78.52'
+     finam.HOST <- '78.41.196.47'
+     #finam.HOST <- '195.128.78.52' 
      finam.URL <- "/table.csv?d=d&market=1&f=table&e=.csv&dtf=1&tmf=1&MSOR=0&sep=1&sep2=1&at=1&"
 
      if (!exists("finam.stock.list")){
