@@ -55,8 +55,13 @@ library(XML)
         
         #names[-(8497)]->names
         res <- unlist(ids)
-        
+        if(length(names)<length(res))
+          {
+            diff <- length(res) - length(names)
+            names <- c(names,rep(NA,diff))
+                      }
         data <- cbind(names,res,markets)
+        
         #data<-data.frame(names,res,markets)
         data[data[,3]!=3,]->data
         rbind(data[(data[,1]%in%data[data[,3]==1,1]) & data[,3]==1,],data[!(data[,1]%in%data[data[,3]==1,1]),])->data

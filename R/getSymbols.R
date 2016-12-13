@@ -114,7 +114,7 @@ for(i in 1:length(Symbols)) {
 }
 
 "getSymbols.Finam" <-
-function(Symbols,env,return.class='xts',index.class='Date',
+function(Symbols,env=environment(),return.class='xts',index.class='Date',
          from='2014-01-01',
          to=Sys.Date(),
          adjust=FALSE,
